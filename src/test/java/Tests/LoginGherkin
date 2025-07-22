@@ -1,0 +1,30 @@
+Feature: User Login
+    Scenario: User can login with valid credentials
+        Given user is on Sauce Demo login page
+        When user enter username "standard_user"
+        And user enter password "secret_sauce"
+        And user click on login button
+        Then user is redirected to the home page
+        And user should see items list
+
+    Scenario: User cannot login with invalid credentials
+        Given user is on Sauce Demo login page
+        When user enter username "standard_user_wrong"
+        And user enter password "secret_sauce_wrong"
+        And user click on login button
+        Then user should see error message "Epic sadface: Username and password do not match any user in this service"
+
+
+Feature: Inventory page
+    Scenario: Inventory page loads after login
+        Given user is logged in as "standard_user" with password "secret_sauce"
+        When user navigate to the inventory page
+        Then user should see the product items list
+        And user should see 6 products in list
+        And each product item should have name, description, price, and image
+
+    Scenario: User can open a product from the product list
+        Given user is logged in as "standard_user" with password "secret_sauce"
+        When user click on the menu button
+        And user click on the logout link
+        Then user is redirected to the login page
