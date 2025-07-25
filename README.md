@@ -56,7 +56,7 @@ The test cases are organized into the following classes:
 1. Clone the repository:
 
    ```bash
-   git clone <your-repo-url>
+   git clone https://github.com/BojanaTa/selenium-saucedemo.git
    ```
 
 2. Open the project in your preferred IDE (e.g., IntelliJ IDEA or Eclipse).
