@@ -29,8 +29,8 @@ public class CartPage extends BaseTest {
 
     public double totalCartPrice() {
         double totalPrice = 0;
-        List<WebElement> products = driver.findElements(By.className("inventory_item_price"));
-        for(WebElement item : products) {
+        List<WebElement> prices = driver.findElements(By.className("inventory_item_price"));
+        for(WebElement item : prices) {
             totalPrice += Double.parseDouble(item.getText().replace("$", ""));
         }
 

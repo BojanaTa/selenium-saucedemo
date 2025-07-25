@@ -40,12 +40,12 @@ public class SortProductsTest extends BaseTest {
 
         homePage.selectSortOption(SortOption.NAMEATOZ);
 
-        Assert.assertTrue(homePage.getFirstName().contains("Backpack"));
-        Assert.assertTrue(homePage.getLastName().contains("Red"));
+        Assert.assertTrue(homePage.getFirstTitle().contains("Backpack"));
+        Assert.assertTrue(homePage.getLastTitle().contains("Red"));
 
         homePage.selectSortOption(SortOption.NAMEZTOA);
 
-        Assert.assertTrue(homePage.getFirstName().contains("Red"));
-        Assert.assertTrue(homePage.getLastName().contains("Backpack"));
+        Assert.assertTrue(homePage.getFirstTitle().contains("Red"));
+        Assert.assertTrue(homePage.getLastTitle().contains("Backpack"));
     }
 }

@@ -50,14 +50,17 @@ public class CheckoutPage extends BaseTest {
     public WebElement errorButton;
 
     public void fillFirstNameField(String firstName) {
+        firstNameField.clear();
         firstNameField.sendKeys(firstName);
     }
 
     public void fillLastNameField(String lastName) {
+        lastNameField.clear();
         lastNameField.sendKeys(lastName);
     }
 
     public void fillPostalCodeField(String postalCode) {
+        postalCodeField.clear();
         postalCodeField.sendKeys((postalCode));
     }
 

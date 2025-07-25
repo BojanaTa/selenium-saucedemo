@@ -5,6 +5,7 @@ import Pages.LoginPage;
 import Pages.NavigationBarPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -13,11 +14,24 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
+import java.util.HashMap;
+import java.util.Map;
 
 public class LoginTest extends BaseTest {
     @BeforeMethod
     public void pageSetup() {
-        driver = new ChromeDriver();
+        Map<String, Object> prefs = new HashMap<>();
+
+        prefs.put("credentials_enable_service", false);
+        prefs.put("profile.password_manager_enabled", false);
+
+        ChromeOptions options = new ChromeOptions();
+        options.setExperimentalOption("prefs", prefs);
+        options.addArguments("--incognito");
+        options.addArguments("--disable-save-password-bubble");
+        options.addArguments("--disable-notifications");
+
+        driver = new ChromeDriver(options);
         driver.manage().window().maximize();
         driver.navigate().to("https://www.saucedemo.com/");
         wait = new WebDriverWait(driver, Duration.ofSeconds(15));
@@ -79,7 +93,7 @@ public class LoginTest extends BaseTest {
         login();
         navigationBarPage.clickOnMenuButton();
 
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("logout_sidebar_link")));
+        wait.until(ExpectedConditions.elementToBeClickable(By.id("logout_sidebar_link")));
         navigationBarPage.clickOnLogoutButton();
 
         Assert.assertTrue(loginPage.usernameField.isDisplayed());

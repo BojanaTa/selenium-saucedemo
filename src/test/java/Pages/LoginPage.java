@@ -23,10 +23,12 @@ public class LoginPage extends BaseTest {
     public WebElement errorMessage;
 
     public void insertUsername(String username) {
+        usernameField.clear();
         usernameField.sendKeys(username);
     }
 
     public void insertPassword(String password) {
+        passwordField.clear();
         passwordField.sendKeys(password);
     }
 

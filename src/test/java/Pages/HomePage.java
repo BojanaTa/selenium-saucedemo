@@ -24,11 +24,11 @@ public class HomePage extends BaseTest {
     @FindBy(className = "inventory_item_price")
     public List<WebElement> prices;
 
-    public String getFirstName() {
+    public String getFirstTitle() {
         return productsNames.getFirst().getText();
     }
 
-    public String getLastName() {
+    public String getLastTitle() {
         return productsNames.getLast().getText();
     }
 
