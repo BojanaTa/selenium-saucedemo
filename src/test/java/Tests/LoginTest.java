@@ -1,9 +1,9 @@
 package Tests;
 
 import Base.BaseTest;
-import Pages.HomePage;
 import Pages.LoginPage;
 import Pages.NavigationBarPage;
+import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -23,7 +23,6 @@ public class LoginTest extends BaseTest {
         wait = new WebDriverWait(driver, Duration.ofSeconds(15));
 
         loginPage = new LoginPage();
-        homePage = new HomePage();
         navigationBarPage = new NavigationBarPage();
     }
 
@@ -44,7 +43,7 @@ public class LoginTest extends BaseTest {
     public void userCannotLoginWithWrongUsername() {
         login("standard_user_wrong", "secret_sauce");
 
-        Assert.assertTrue(loginPage.getErrorMessage().isDisplayed());
+        Assert.assertTrue(loginPage.errorMessage.isDisplayed());
         Assert.assertTrue(loginPage.getErrorMessageText()
                 .contains("Username and password do not match any user in this service"));
     }
@@ -53,7 +52,7 @@ public class LoginTest extends BaseTest {
     public void userCannotLoginWithWrongPassword() {
         login("standard_user", "secret_sauce_wrong");
 
-        Assert.assertTrue(loginPage.getErrorMessage().isDisplayed());
+        Assert.assertTrue(loginPage.errorMessage.isDisplayed());
         Assert.assertTrue(loginPage.getErrorMessageText()
                 .contains("Username and password do not match any user in this service"));
     }
@@ -62,7 +61,7 @@ public class LoginTest extends BaseTest {
     public void userCannotLoginWithWrongUsernameAndPassword() {
         login("standard_user_wrong", "secret_sauce_wrong");
 
-        Assert.assertTrue(loginPage.getErrorMessage().isDisplayed());
+        Assert.assertTrue(loginPage.errorMessage.isDisplayed());
         Assert.assertTrue(loginPage.getErrorMessageText()
                 .contains("Username and password do not match any user in this service"));
     }
@@ -71,7 +70,7 @@ public class LoginTest extends BaseTest {
     public void lockedupUserCannotLogin() {
         login("locked_out_user", "secret_sauce");
 
-        Assert.assertTrue(loginPage.getErrorMessage().isDisplayed());
+        Assert.assertTrue(loginPage.errorMessage.isDisplayed());
         Assert.assertTrue(loginPage.getErrorMessageText().contains("Sorry, this user has been locked out."));
     }
 
@@ -80,7 +79,7 @@ public class LoginTest extends BaseTest {
         login();
         navigationBarPage.clickOnMenuButton();
 
-        wait.until(ExpectedConditions.visibilityOfElementLocated(navigationBarPage.logoutLink));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("logout_sidebar_link")));
         navigationBarPage.clickOnLogoutButton();
 
         Assert.assertTrue(loginPage.usernameField.isDisplayed());

@@ -10,10 +10,10 @@ public class ProductPage extends BaseTest {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(css = "div[data-test='inventory-item-name']")
+    @FindBy(css = ".inventory_details_name.large_size")
     public WebElement productTitle;
 
-    @FindBy(css = "div[data-test='inventory-item-price']")
+    @FindBy(className = "inventory_details_price")
     public WebElement price;
 
     @FindBy(id = "add-to-cart")

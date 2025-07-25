@@ -57,7 +57,7 @@ public class CheckoutPage extends BaseTest {
         lastNameField.sendKeys(lastName);
     }
 
-    public void fillPostaCodeField(String postalCode) {
+    public void fillPostalCodeField(String postalCode) {
         postalCodeField.sendKeys((postalCode));
     }
 

@@ -1,7 +1,6 @@
 package Pages;
 
 import Base.BaseTest;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -10,8 +9,6 @@ public class NavigationBarPage extends BaseTest {
     public NavigationBarPage() {
         PageFactory.initElements(driver, this);
     }
-
-    public By logoutLink = By.id("logout_sidebar_link");
 
     @FindBy(className = "app_logo")
     public WebElement appLogo;

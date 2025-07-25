@@ -1,7 +1,6 @@
 package Pages;
 
 import Base.BaseTest;
-import Base.ProductType;
 import Base.SortOption;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -41,30 +40,29 @@ public class HomePage extends BaseTest {
         return Double.parseDouble(prices.getLast().getText().replace("$", ""));
     }
 
-    public WebElement getItem(ProductType productType) {
-        List<WebElement> items = productsNames;
-        for (WebElement item : items) {
-            if (item.getText().toLowerCase().contains(productType.toString().toLowerCase())) {
+    public WebElement getProductName(String productName) {
+        for (WebElement item : productsNames) {
+            if (item.getText().toLowerCase().contains(productName.toLowerCase())) {
                 System.out.println(item.getText() + " is opened.");
                 return item;
             }
         }
-        System.out.println(items.getFirst().getText() + " is opened.");
-        return items.getFirst();
+        System.out.println(productsNames.getFirst().getText() + " is opened.");
+        return productsNames.getFirst();
     }
 
-    public void clickOnProduct(ProductType productType) {
-        getItem(productType).click();
+    public void clickOnProduct(String productName) {
+        getProductName(productName).click();
     }
 
-    public void addProductToCart(ProductType productType) {
-        switch (productType) {
-            case BACKPACK -> driver.findElement(By.id("add-to-cart-sauce-labs-backpack")).click();
-            case BIKE -> driver.findElement(By.id("add-to-cart-sauce-labs-bike-light")).click();
-            case JACKET -> driver.findElement(By.id("add-to-cart-sauce-labs-fleece-jacket")).click();
-            case RED -> driver.findElement(By.id("add-to-cart-test.allthethings()-t-shirt-(red)")).click();
-            case BOLT -> driver.findElement(By.id("add-to-cart-sauce-labs-bolt-t-shirt")).click();
-            case ONESIE -> driver.findElement(By.id("add-to-cart-sauce-labs-onesie")).click();
+    public void addProductToCart(String productName) {
+        switch (productName.toLowerCase()) {
+            case "backpack" -> driver.findElement(By.id("add-to-cart-sauce-labs-backpack")).click();
+            case "bike" -> driver.findElement(By.id("add-to-cart-sauce-labs-bike-light")).click();
+            case "jacket" -> driver.findElement(By.id("add-to-cart-sauce-labs-fleece-jacket")).click();
+            case "red" -> driver.findElement(By.id("add-to-cart-test.allthethings()-t-shirt-(red)")).click();
+            case "bolt" -> driver.findElement(By.id("add-to-cart-sauce-labs-bolt-t-shirt")).click();
+            case "onesie" -> driver.findElement(By.id("add-to-cart-sauce-labs-onesie")).click();
         }
     }
 

@@ -34,11 +34,7 @@ public class LoginPage extends BaseTest {
         loginButton.click();
     }
 
-    public WebElement getErrorMessage() {
-        return errorMessage;
-    }
-
     public String getErrorMessageText() {
-        return getErrorMessage().getText();
+        return errorMessage.getText();
     }
 }

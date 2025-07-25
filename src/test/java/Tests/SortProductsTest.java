@@ -5,13 +5,10 @@ import Base.SortOption;
 import Pages.HomePage;
 import Pages.LoginPage;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
-import java.time.Duration;
 
 public class SortProductsTest extends BaseTest {
     @BeforeMethod
@@ -19,8 +16,6 @@ public class SortProductsTest extends BaseTest {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.navigate().to("https://www.saucedemo.com/");
-        wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-
         loginPage = new LoginPage();
         homePage = new HomePage();
     }
